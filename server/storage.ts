@@ -1,38 +1,51 @@
-import { type User, type InsertUser } from "@shared/schema";
-import { randomUUID } from "crypto";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { eq } from "drizzle-orm";
+import pg from "pg";
+import { type User, type InsertUser, type ContactInquiry, type InsertContactInquiry, users, contactInquiries } from "@shared/schema";
 
-// modify the interface with any CRUD methods
-// you might need
+const { Pool } = pg;
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
+  createContactInquiry(inquiry: InsertContactInquiry): Promise<ContactInquiry>;
+  getAllContactInquiries(): Promise<ContactInquiry[]>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<string, User>;
+export class DatabaseStorage implements IStorage {
+  private db;
 
   constructor() {
-    this.users = new Map();
+    const pool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+    });
+    this.db = drizzle(pool);
   }
 
   async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+    const result = await this.db.select().from(users).where(eq(users.id, id));
+    return result[0];
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    const result = await this.db.select().from(users).where(eq(users.username, username));
+    return result[0];
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+    const result = await this.db.insert(users).values(insertUser).returning();
+    return result[0];
+  }
+
+  async createContactInquiry(inquiry: InsertContactInquiry): Promise<ContactInquiry> {
+    const result = await this.db.insert(contactInquiries).values(inquiry).returning();
+    return result[0];
+  }
+
+  async getAllContactInquiries(): Promise<ContactInquiry[]> {
+    return await this.db.select().from(contactInquiries);
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
