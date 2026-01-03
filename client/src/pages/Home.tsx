@@ -78,18 +78,18 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background overflow-hidden">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section 
+      <section
         className="relative min-h-screen flex items-center justify-center bg-cover bg-center"
         style={{
           backgroundImage: `url(${heroImage})`,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-        
+
         {/* Decorative mandala overlay */}
-        <div 
+        <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-10 pointer-events-none"
           style={{
             backgroundImage: `url(${mandalaImage})`,
@@ -98,48 +98,48 @@ export default function Home() {
             backgroundPosition: "center",
           }}
         />
-        
-        <div className="container mx-auto px-4 text-center text-white relative z-10">
+
+        <div className="container mx-auto px-4 text-center text-white relative z-10 pt-24 md:pt-0">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.p 
+            <motion.p
               variants={fadeInUp}
               className="text-primary font-medium tracking-[0.3em] uppercase mb-6 text-sm md:text-base"
             >
               Presenting India's Artistic Legacy
             </motion.p>
-            
-            <motion.h1 
+
+            <motion.h1
               variants={fadeInUp}
-              className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-tight" 
+              className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-tight"
               data-testid="text-hero-title"
             >
               IndoStage Creative
               <span className="block text-primary">&amp; Production</span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               variants={fadeInUp}
-              className="text-xl md:text-2xl lg:text-3xl mb-4 max-w-4xl mx-auto font-light italic" 
+              className="text-xl md:text-2xl lg:text-3xl mb-4 max-w-4xl mx-auto font-light italic"
               data-testid="text-hero-subtitle"
             >
               Where Indian Heritage Meets Global Stages
             </motion.p>
-            
-            <motion.p 
+
+            <motion.p
               variants={fadeInUp}
               className="text-base md:text-lg mb-12 max-w-2xl mx-auto text-white/80"
             >
               A premier cultural and entertainment company dedicated to presenting India's rich artistic legacy to audiences across the world.
             </motion.p>
-            
+
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-10 py-7 text-lg group"
                   data-testid="button-get-in-touch"
                 >
@@ -148,8 +148,8 @@ export default function Home() {
                 </Button>
               </Link>
               <Link href="/services">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   variant="outline"
                   className="border-white/50 text-white hover:bg-white/10 px-10 py-7 text-lg"
                 >
@@ -159,9 +159,9 @@ export default function Home() {
             </motion.div>
           </motion.div>
         </div>
-        
+
         {/* Scroll indicator */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
@@ -179,7 +179,7 @@ export default function Home() {
 
       {/* Stats Section */}
       <section className="py-16 bg-secondary text-secondary-foreground relative overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 opacity-5"
           style={{
             backgroundImage: `url(${mandalaImage})`,
@@ -188,7 +188,7 @@ export default function Home() {
           }}
         />
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -196,8 +196,8 @@ export default function Home() {
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {stats.map((stat, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 variants={scaleIn}
                 className="text-center"
               >
@@ -226,26 +226,26 @@ export default function Home() {
             <motion.p variants={fadeInUp} className="text-primary font-medium tracking-widest uppercase mb-4 text-sm">
               Our Purpose
             </motion.p>
-            <motion.h2 
+            <motion.h2
               variants={fadeInUp}
-              className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-8 text-foreground leading-tight" 
+              className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-8 text-foreground leading-tight"
               data-testid="text-vision-title"
             >
               Bridging Heritage
               <span className="text-primary"> & Innovation</span>
             </motion.h2>
-            <motion.p 
+            <motion.p
               variants={fadeInUp}
-              className="text-lg text-muted-foreground leading-relaxed mb-6" 
+              className="text-lg text-muted-foreground leading-relaxed mb-6"
               data-testid="text-vision-description"
             >
-              At IndoStage, we believe that India's artistic traditions are not relics of the past, 
-              but living, breathing expressions of human creativity that deserve to be celebrated on 
+              At IndoStage, we believe that India's artistic traditions are not relics of the past,
+              but living, breathing expressions of human creativity that deserve to be celebrated on
               the world's grandest stages.
             </motion.p>
             <motion.p variants={fadeInUp} className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Our vision is to become India's leading cultural production house—one that connects heritage 
-              with innovation, nurtures emerging talent from every corner of the nation, and delivers 
+              Our vision is to become India's leading cultural production house—one that connects heritage
+              with innovation, nurtures emerging talent from every corner of the nation, and delivers
               world-class artistic experiences that transcend borders and touch hearts.
             </motion.p>
             <motion.div variants={fadeInUp}>
@@ -257,7 +257,7 @@ export default function Home() {
               </Link>
             </motion.div>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -266,10 +266,10 @@ export default function Home() {
             className="relative"
           >
             <div className="relative">
-              <img 
-                src={dancerImage} 
-                alt="Classical Dancer" 
-                className="w-full h-[600px] object-cover rounded-lg shadow-2xl"
+              <img
+                src={dancerImage}
+                alt="Classical Dancer"
+                className="w-full aspect-[3/4] object-cover rounded-xl shadow-2xl"
               />
               <div className="absolute -bottom-6 -left-6 w-48 h-48 border-4 border-primary rounded-lg -z-10" />
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary/20 rounded-lg -z-10" />
@@ -295,12 +295,12 @@ export default function Home() {
               Our Artistic Services
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              From intimate recitals to grand productions, we curate experiences that celebrate 
+              From intimate recitals to grand productions, we curate experiences that celebrate
               the full spectrum of India's cultural magnificence.
             </motion.p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
@@ -309,7 +309,7 @@ export default function Home() {
           >
             {services.map((service, index) => (
               <motion.div key={index} variants={scaleIn}>
-                <Card 
+                <Card
                   className="group h-full hover:shadow-2xl transition-all duration-500 border-border hover:border-primary/50 bg-card overflow-hidden"
                   data-testid={`card-service-${index}`}
                 >
@@ -329,7 +329,7 @@ export default function Home() {
             ))}
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -348,7 +348,7 @@ export default function Home() {
 
       {/* Featured Image Section */}
       <section className="relative h-[70vh] overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: `url(${stageImage})` }}
         />
@@ -370,8 +370,8 @@ export default function Home() {
                 Taking Indian Artistry Beyond Borders
               </motion.h2>
               <motion.p variants={fadeInUp} className="text-lg text-white/90 leading-relaxed mb-8">
-                We aspire to collaborate with international festivals, cultural organisations, 
-                Indian embassies, tourism boards, and global corporate houses to create impactful, 
+                We aspire to collaborate with international festivals, cultural organisations,
+                Indian embassies, tourism boards, and global corporate houses to create impactful,
                 memorable experiences on world stages.
               </motion.p>
               <motion.div variants={fadeInUp}>
@@ -388,7 +388,7 @@ export default function Home() {
 
       {/* Talent Promotion Section */}
       <section className="py-24 bg-accent text-accent-foreground relative overflow-hidden">
-        <div 
+        <div
           className="absolute top-0 right-0 w-96 h-96 opacity-10"
           style={{
             backgroundImage: `url(${mandalaImage})`,
@@ -404,13 +404,13 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <img 
-                src={vocalistImage} 
-                alt="Classical Vocalist" 
-                className="w-full h-[500px] object-cover rounded-lg shadow-2xl"
+              <img
+                src={vocalistImage}
+                alt="Classical Vocalist"
+                className="w-full aspect-[3/4] object-cover rounded-xl shadow-2xl"
               />
             </motion.div>
-            
+
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -420,31 +420,31 @@ export default function Home() {
               <motion.p variants={fadeInUp} className="font-medium tracking-widest uppercase mb-4 text-sm opacity-80">
                 Our Commitment
               </motion.p>
-              <motion.h2 
+              <motion.h2
                 variants={fadeInUp}
-                className="text-4xl md:text-5xl font-serif font-bold mb-8 leading-tight" 
+                className="text-4xl md:text-5xl font-serif font-bold mb-8 leading-tight"
                 data-testid="text-commitment-title"
               >
                 Promoting New & Rural Talent
               </motion.h2>
-              <motion.p 
+              <motion.p
                 variants={fadeInUp}
-                className="text-lg leading-relaxed mb-6" 
+                className="text-lg leading-relaxed mb-6"
                 data-testid="text-commitment-description"
               >
-                At the heart of IndoStage lies an unwavering commitment to discovering, nurturing, 
+                At the heart of IndoStage lies an unwavering commitment to discovering, nurturing,
                 and promoting talented artists from rural and underrepresented regions of India.
               </motion.p>
               <motion.p variants={fadeInUp} className="text-lg leading-relaxed mb-8">
-                We offer them a dignified platform, professional grooming, and opportunities to 
-                perform on national as well as international stages—transforming their dreams into 
+                We offer them a dignified platform, professional grooming, and opportunities to
+                perform on national as well as international stages—transforming their dreams into
                 reality.
               </motion.p>
-              <motion.blockquote 
+              <motion.blockquote
                 variants={fadeInUp}
                 className="border-l-4 border-primary pl-6 italic text-xl font-serif"
               >
-                "Indian culture grows when every artist is heard—and we are here to make their 
+                "Indian culture grows when every artist is heard—and we are here to make their
                 voice reach the world."
               </motion.blockquote>
             </motion.div>
@@ -464,7 +464,7 @@ export default function Home() {
             Ready to Create Something <span className="text-primary">Extraordinary?</span>
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-            Whether you're planning a cultural event, seeking artistic collaboration, or looking to 
+            Whether you're planning a cultural event, seeking artistic collaboration, or looking to
             showcase your talent, we'd love to hear from you.
           </motion.p>
           <motion.div variants={fadeInUp}>

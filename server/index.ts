@@ -5,6 +5,16 @@ import { createServer } from "http";
 
 const app = express();
 const httpServer = createServer(app);
+httpServer.on("error", (err: any) => {
+  console.error("HTTP Server Error Code:", err.code);
+  console.error("HTTP Server Error Details:", err);
+});
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught Exception:", err);
+});
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise, "reason:", reason);
+});
 
 declare module "http" {
   interface IncomingMessage {
@@ -89,7 +99,6 @@ app.use((req, res, next) => {
     {
       port,
       host: "0.0.0.0",
-      reusePort: true,
     },
     () => {
       log(`serving on port ${port}`);

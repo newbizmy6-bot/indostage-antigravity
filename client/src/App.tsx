@@ -9,6 +9,8 @@ import About from "@/pages/About";
 import Services from "@/pages/Services";
 import Team from "@/pages/Team";
 import Contact from "@/pages/Contact";
+import ScrollToTop from "@/components/ScrollToTop";
+import SocialSidebar from "@/components/SocialSidebar";
 
 function Router() {
   return (
@@ -28,6 +30,8 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <ScrollToTop />
+        <SocialSidebar />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>
