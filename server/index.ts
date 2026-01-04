@@ -94,14 +94,16 @@ app.use((req, res, next) => {
   // Other ports are firewalled. Default to 5000 if not specified.
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || "5000", 10);
+  const port = parseInt(process.env.PORT || "0", 10);
   httpServer.listen(
     {
       port,
       host: "0.0.0.0",
     },
     () => {
-      log(`serving on port ${port}`);
+      const address = httpServer.address();
+      const actualPort = typeof address === "string" ? port : address?.port;
+      log(`serving on port ${actualPort}`);
     },
   );
 })();

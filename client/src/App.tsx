@@ -11,6 +11,7 @@ import Team from "@/pages/Team";
 import Contact from "@/pages/Contact";
 import ScrollToTop from "@/components/ScrollToTop";
 import SocialSidebar from "@/components/SocialSidebar";
+import WhatsAppPopup from "@/components/WhatsAppPopup";
 
 function Router() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Toaster />
         <ScrollToTop />
         <SocialSidebar />
+        <WhatsAppPopup />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>
